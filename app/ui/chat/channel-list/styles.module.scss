@@ -1,0 +1,26 @@
+.container {
+  width: 250px;
+  background-color: rgb(216, 221, 250);
+  text-align: center;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .group {
+    background-color: rgb(184, 203, 215);
+    border-radius: 5px;
+    padding: 3px;
+    width: 90%;
+    margin: 3px;
+
+    .title {
+      font-weight: 600;
+    }
+
+    .subtitle {
+      color: #888181;
+      font-size: 15px;
+    }
+  }
+}
