@@ -14,7 +14,9 @@ export default function UsersList({ socket }: { socket: io.Socket }) {
   const [users, setUsers] = React.useState<UserType[] | []>([]);
 
   React.useEffect(() => {
-    socket.on("responseNewUser", (data) => setUsers(data));
+    socket.on("usersChange", (users) => {
+      setUsers(users)
+    });
   }, [socket, users]);
 
   return (

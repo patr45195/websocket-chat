@@ -44,7 +44,7 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
   };
 
   React.useEffect(() => {
-    socket.on("response", (data) => setMessages([...messages, data]));
+    socket.on("response", (userMessage) => setMessages([...messages, userMessage]));
   }, [socket, messages]);
 
   React.useEffect(() => {
