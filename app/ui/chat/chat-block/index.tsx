@@ -4,6 +4,8 @@ import * as io from "socket.io-client";
 import React, { FormEvent } from "react";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/navigation";
+import Button from '@mui/material/Button';
+import SendIcon from '@mui/icons-material/Send';
 
 interface messagesType {
   text: string;
@@ -92,7 +94,7 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={isTyping}
           />
-          <button className={styles.btn}>Say...</button>
+          <Button type="submit" variant="contained" endIcon={<SendIcon />}>Send</Button>
         </form>
       </div>
     </div>
