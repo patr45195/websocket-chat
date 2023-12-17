@@ -8,13 +8,11 @@ import ChannelList from "../ui/chat/channel-list";
 
 const socket = io.connect("http://localhost:5000");
 
-console.log(socket)
-
 export default function Chat() {
   return (
     <div className="flex justify-between">
       <ChannelList />
-      <ChatPage />
+      <ChatPage socket={socket}/>
       <UsersList />
     </div>
   );
