@@ -1,8 +1,11 @@
-import Header from "../ui/chat/header/header"
+import Header from "../ui/chat/header/header";
+import { Inter } from "next/font/google";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function Layout({ children }: { children: React.ReactNode }) {
   return (
-    <div className="">
+    <div className={inter.className}>
       <Header />
       <div className="">{children}</div>
     </div>

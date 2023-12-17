@@ -3,7 +3,7 @@ import styles from "./styles.module.scss";
 export default function ChannelList() {
   return (
     <div className={styles.container}>
-      <div>Channel list</div>
+      <div>Channels list</div>
       <div className={styles.group}>
         <p className={styles.title}>
           Message Group 1
