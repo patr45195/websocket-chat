@@ -21,11 +21,11 @@ export default function UsersList({ socket }: { socket: io.Socket }) {
 
   return (
     <div className={styles.container}>
-      Users list
+      <p className={styles.title}>Users list</p>
       <div>
         {users.map((element: UserType) => {
           return (
-            <div className="flex items-center p-3" key={element.socketID}>
+            <div className={styles.userBlock} key={element.socketID}>
               <Image
                 src={"/users/user1.png"}
                 alt={`user name`}

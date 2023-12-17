@@ -31,7 +31,7 @@ export default function Chat() {
   }, [socket]);
 
   return (
-    <div className="flex justify-between">
+    <div className="flex justify-between h-96">
       <ChannelList />
       {socket && <ChatPage socket={socket} />}
       {socket && <UsersList socket={socket} />}

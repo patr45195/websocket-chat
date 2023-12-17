@@ -72,18 +72,16 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
           </div>
         ) : (
           <div key={element.messageID} className={styles.chats}>
-            <p>{element.name}</p>
+            <p className={styles.recipientName}>{element.name}</p>
             <div className={styles.messageRecipient}>
               <p>{element.text}</p>
             </div>
           </div>
         )
       )}
-
       <div className={styles.status}>
         <p>{status}</p>
       </div>
-
       <div className={styles.messageBlock}>
         <form onSubmit={handleSend} className={styles.form}>
           <input

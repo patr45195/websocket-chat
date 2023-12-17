@@ -1,5 +1,4 @@
 .container {
-  background-color: rgb(202, 210, 252);
   width: 100%;
   border-radius: 10px;
 
@@ -16,20 +15,33 @@
     text-align: right;
   }
 
+  .senderName {
+    margin-right: 10px;
+  }
   .messageSender {
-    background-color: #e98e73;
+    background-color: #e9f1f5;
     max-width: 300px;
     padding: 10px;
-    border-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 10px;
     margin-left: auto;
+    margin-right: 10px;
     font-size: 15px;
   }
 
+  .recipientName {
+    margin-left: 10px;
+  }
   .messageRecipient {
-    background-color: #f9efec;
+    background-color: #3b82f6;
+    color: white;
     width: 300px;
     padding: 10px;
-    border-radius: 10px;
+    margin-left: 10px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
     font-size: 15px;
   }
 
