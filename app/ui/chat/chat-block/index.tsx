@@ -17,7 +17,7 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
   const router = useRouter();
 
   const [input, setInput] = React.useState("");
-  const [status, setStatus] = React.useState("");
+  const [typingStatus, setTypingStatus] = React.useState("");
   const [messages, setMessages] = React.useState<messagesType[]>([]);
 
   const handleLeave = () => {
@@ -47,8 +47,8 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
 
   React.useEffect(() => {
     socket.on("responseTyping", (data) => {
-      setStatus(data);
-      setTimeout(() => setStatus(""), 3000);
+      setTypingStatus(data);
+      setTimeout(() => setTypingStatus(""), 3000);
     });
   }, [socket]);
 
@@ -106,8 +106,8 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
             Send
           </Button>
         </form>
-        <div className={styles.status}>
-          <p>{status}</p>
+        <div className={styles.typingStatus}>
+          <p>{typingStatus}</p>
         </div>
       </div>
     </div>
