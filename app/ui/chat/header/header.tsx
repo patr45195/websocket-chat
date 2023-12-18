@@ -4,7 +4,7 @@ export default function Header() {
   return (
     <Link href={"/"}>
       <div className="bg-blue-500 rounded-lg w-full p-3">
-      <span className="text-xl text-white font-semibold" style={{ marginLeft: "-4px", letterSpacing: "1px" }}>
+      <span className="text-xl text-white font-semibold" style={{ marginLeft: "37px" }}>
           WebsocketChat
         </span>
       </div>

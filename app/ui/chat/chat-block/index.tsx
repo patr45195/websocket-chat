@@ -6,7 +6,7 @@ import styles from "./styles.module.scss";
 import { useRouter } from "next/navigation";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
-import { KeyboardEvent } from 'react';
+import { KeyboardEvent } from "react";
 
 interface messagesType {
   text: string;
@@ -64,11 +64,7 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <Button
-          sx={{ marginRight: "20px", width: "150px" }}
-          onClick={handleLeave}
-          color="error"
-        >
+        <Button sx={{ width: "150px" }} onClick={handleLeave} color="error">
           Leave chat
         </Button>
         <div className={styles.typingStatus}>
