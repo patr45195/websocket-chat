@@ -12,6 +12,7 @@ interface messagesType {
   text: string;
   name: string;
   messageID: string;
+  socketId: string;
 }
 
 export default function ChatPage({ socket }: { socket: io.Socket }) {
@@ -56,8 +57,8 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
   }, [socket]);
 
   React.useEffect(() => {
-    socket.on("response", (userMessage) =>
-      setMessages([...messages, userMessage])
+    socket.on("response", (userMessages) =>
+      setMessages(userMessages)
     );
   }, [socket, messages]);
 
