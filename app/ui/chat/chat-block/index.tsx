@@ -59,9 +59,9 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <button className={styles.leaveBtn} onClick={handleLeave}>
+        <Button sx={{marginRight: '20px', width: '150px'}} onClick={handleLeave} color="error">
           Leave chat
-        </button>
+        </Button>
       </header>
       <hr />
       {messages.map((element: messagesType) =>
@@ -90,11 +90,11 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
             className={styles.userMessage}
             type="text"
             value={input}
-            placeholder="Type your message..."
+            placeholder="Write a message..."
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={isTyping}
           />
-          <Button type="submit" variant="contained" endIcon={<SendIcon />}>Send</Button>
+          <Button sx={{height: '50px', width: '150px', marginLeft: '5px'}} type="submit" variant="contained" endIcon={<SendIcon />}>Send</Button>
         </form>
       </div>
     </div>
