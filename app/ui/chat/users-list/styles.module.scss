@@ -3,6 +3,9 @@
   background-color: #e9f1f5;
   text-align: center;
   border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
   .title {
     font-size: 17px;
@@ -13,8 +16,12 @@
   .userBlock {
     display: flex;
     align-items: center;
+    width: 225px;
+    background-color: white;
     padding: 0.75rem;
-    box-shadow: 1px 1px 1px 1px rgb(116, 114, 114);
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
 
   span {
