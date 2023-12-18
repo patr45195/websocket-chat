@@ -7,6 +7,15 @@
   .header {
     display: flex;
     justify-content: flex-end;
+
+    .typingStatus {
+      position: absolute;
+      font-size: 13px;
+      font-style: italic;
+      position: absolute;
+      left: 630px;
+      top: 60px;
+    }
   }
 
   .chats > p {
@@ -54,15 +63,6 @@
     padding-right: 10px;
     padding-top: 10px;
     margin-top: auto;
-    position: relative;
-
-    .typingStatus {
-      position: absolute;
-      font-size: 13px;
-      font-style: italic;
-      position: absolute;
-      top: -10px;
-    }
   }
 
   .form {

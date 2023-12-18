@@ -68,6 +68,9 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
         >
           Leave chat
         </Button>
+        <div className={styles.typingStatus}>
+          <p>{typingStatus}</p>
+        </div>
       </header>
       <hr />
       {messages.map((element: messagesType) =>
@@ -106,9 +109,6 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
             Send
           </Button>
         </form>
-        <div className={styles.typingStatus}>
-          <p>{typingStatus}</p>
-        </div>
       </div>
     </div>
   );
