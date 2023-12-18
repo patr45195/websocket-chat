@@ -6,6 +6,7 @@ import styles from "./styles.module.scss";
 import { useRouter } from "next/navigation";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
+import { KeyboardEvent } from 'react';
 
 interface messagesType {
   text: string;
@@ -41,8 +42,10 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
     setInput("");
   };
 
-  const isTyping = () => {
-    socket.emit("typing", `${localStorage.getItem("user")} is typing...`);
+  const isTyping = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key !== "Enter") {
+      socket.emit("typing", `${localStorage.getItem("user")} is typing...`);
+    }
   };
 
   React.useEffect(() => {
