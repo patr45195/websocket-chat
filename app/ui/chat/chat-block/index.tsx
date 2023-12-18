@@ -4,8 +4,8 @@ import * as io from "socket.io-client";
 import React, { FormEvent } from "react";
 import styles from "./styles.module.scss";
 import { useRouter } from "next/navigation";
-import Button from '@mui/material/Button';
-import SendIcon from '@mui/icons-material/Send';
+import Button from "@mui/material/Button";
+import SendIcon from "@mui/icons-material/Send";
 
 interface messagesType {
   text: string;
@@ -46,7 +46,9 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
   };
 
   React.useEffect(() => {
-    socket.on("response", (userMessage) => setMessages([...messages, userMessage]));
+    socket.on("response", (userMessage) =>
+      setMessages([...messages, userMessage])
+    );
   }, [socket, messages]);
 
   React.useEffect(() => {
@@ -59,7 +61,11 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <Button sx={{marginRight: '20px', width: '150px'}} onClick={handleLeave} color="error">
+        <Button
+          sx={{ marginRight: "20px", width: "150px" }}
+          onClick={handleLeave}
+          color="error"
+        >
           Leave chat
         </Button>
       </header>
@@ -94,7 +100,14 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={isTyping}
           />
-          <Button sx={{height: '50px', width: '150px', marginLeft: '5px'}} type="submit" variant="contained" endIcon={<SendIcon />}>Send</Button>
+          <Button
+            sx={{ height: "50px", width: "150px", marginLeft: "5px" }}
+            type="submit"
+            variant="contained"
+            endIcon={<SendIcon />}
+          >
+            Send
+          </Button>
         </form>
       </div>
     </div>
