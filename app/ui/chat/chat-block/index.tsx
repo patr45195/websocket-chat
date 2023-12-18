@@ -7,6 +7,7 @@ import { useRouter } from "next/navigation";
 import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import { KeyboardEvent } from "react";
+import AlertDialog from "../../alertDialog";
 
 interface messagesType {
   text: string;
@@ -27,10 +28,6 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
     socket.disconnect();
     router.push("/");
   };
-
-  const clearChat = () => {
-    socket.emit("clearChat");
-  }
 
   const handleSend = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -64,13 +61,13 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
     socket.on("response", (usersMessages) => setMessages(usersMessages));
   }, [socket, messages]);
 
-
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        <Button sx={{ width: "150px" }} onClick={clearChat} color="error">
+        {/* <Button sx={{ width: "150px" }} onClick={clearChat} color="error">
           Clear chat
-        </Button>
+        </Button> */}
+        <AlertDialog socket={socket}/>
         <Button sx={{ width: "150px" }} onClick={handleLeave} color="error">
           Leave chat
         </Button>
