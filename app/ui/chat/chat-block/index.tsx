@@ -20,10 +20,6 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
   const [status, setStatus] = React.useState("");
   const [messages, setMessages] = React.useState<messagesType[]>([]);
 
-  const isTyping = () => {
-    socket.emit("typing", `${localStorage.getItem("user")} is typing`);
-  };
-
   const handleLeave = () => {
     localStorage.removeItem("user");
     socket.disconnect();
@@ -45,11 +41,9 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
     setInput("");
   };
 
-  React.useEffect(() => {
-    socket.on("response", (userMessage) =>
-      setMessages([...messages, userMessage])
-    );
-  }, [socket, messages]);
+  const isTyping = () => {
+    socket.emit("typing", `${localStorage.getItem("user")} is typing...`);
+  };
 
   React.useEffect(() => {
     socket.on("responseTyping", (data) => {
@@ -57,6 +51,12 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
       setTimeout(() => setStatus(""), 3000);
     });
   }, [socket]);
+
+  React.useEffect(() => {
+    socket.on("response", (userMessage) =>
+      setMessages([...messages, userMessage])
+    );
+  }, [socket, messages]);
 
   return (
     <div className={styles.container}>
@@ -87,9 +87,6 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
           </div>
         )
       )}
-      <div className={styles.status}>
-        <p>{status}</p>
-      </div>
       <div className={styles.messageBlock}>
         <form onSubmit={handleSend} className={styles.form}>
           <input
@@ -109,6 +106,9 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
             Send
           </Button>
         </form>
+        <div className={styles.status}>
+          <p>{status}</p>
+        </div>
       </div>
     </div>
   );
