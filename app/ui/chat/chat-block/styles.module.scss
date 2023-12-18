@@ -7,14 +7,19 @@
   .header {
     display: flex;
     justify-content: flex-end;
+  }
+
+  .hrLine {
+    position: relative;
 
     .typingStatus {
       position: absolute;
       font-size: 13px;
       font-style: italic;
       position: absolute;
-      left: 630px;
-      top: 60px;
+      left: 50%;
+      margin-top: -20px;
+      transform: translate(-50%, -50%);
     }
   }
 

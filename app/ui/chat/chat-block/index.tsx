@@ -64,35 +64,36 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
   return (
     <div className={styles.container}>
       <header className={styles.header}>
-        {/* <Button sx={{ width: "150px" }} onClick={clearChat} color="error">
-          Clear chat
-        </Button> */}
-        <AlertDialog socket={socket}/>
+        <AlertDialog socket={socket} />
         <Button sx={{ width: "150px" }} onClick={handleLeave} color="error">
           Leave chat
         </Button>
+      </header>
+      <div className={styles.hrLine}>
+        <hr />
         <div className={styles.typingStatus}>
           <p>{typingStatus}</p>
         </div>
-      </header>
-      <hr />
-      {messages.map((element: messagesType) =>
-        element.name === localStorage.getItem("user") ? (
-          <div key={element.messageID} className={styles.chats}>
-            <p className={styles.senderName}>You</p>
-            <div className={styles.messageSender}>
-              <p>{element.text}</p>
+      </div>
+      <div className={styles.chatsBlock}>
+        {messages.map((element: messagesType) =>
+          element.name === localStorage.getItem("user") ? (
+            <div key={element.messageID} className={styles.chats}>
+              <p className={styles.senderName}>You</p>
+              <div className={styles.messageSender}>
+                <p>{element.text}</p>
+              </div>
             </div>
-          </div>
-        ) : (
-          <div key={element.messageID} className={styles.chats}>
-            <p className={styles.recipientName}>{element.name}</p>
-            <div className={styles.messageRecipient}>
-              <p>{element.text}</p>
+          ) : (
+            <div key={element.messageID} className={styles.chats}>
+              <p className={styles.recipientName}>{element.name}</p>
+              <div className={styles.messageRecipient}>
+                <p>{element.text}</p>
+              </div>
             </div>
-          </div>
-        )
-      )}
+          )
+        )}
+      </div>
       <div className={styles.messageBlock}>
         <form onSubmit={handleSend} className={styles.form}>
           <input
