@@ -8,12 +8,14 @@ import Button from "@mui/material/Button";
 import SendIcon from "@mui/icons-material/Send";
 import { KeyboardEvent } from "react";
 import AlertDialog from "../../alertDialog";
+import { getFormatedDate } from "@/app/utils/getFormatedDate";
 
 interface messagesType {
   text: string;
   name: string;
   messageID: string;
   socketId: string;
+  date: number;
 }
 
 export default function ChatPage({ socket }: { socket: io.Socket }) {
@@ -38,6 +40,7 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
         name: localStorage.getItem("user"),
         messageID: `${socket.id}-${Math.random()}`,
         socketId: socket.id,
+        date: Date.now(),
       });
     }
 
@@ -82,6 +85,7 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
               <p className={styles.senderName}>You</p>
               <div className={styles.messageSender}>
                 <p>{element.text}</p>
+                <span className={styles.date}>{getFormatedDate(element.date)}</span>
               </div>
             </div>
           ) : (
@@ -89,6 +93,7 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
               <p className={styles.recipientName}>{element.name}</p>
               <div className={styles.messageRecipient}>
                 <p>{element.text}</p>
+                <span className={styles.date}>{getFormatedDate(element.date)}</span>
               </div>
             </div>
           )
