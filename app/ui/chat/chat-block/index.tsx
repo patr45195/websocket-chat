@@ -117,7 +117,7 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
       <div className={styles.messageBlock}>
         <form onSubmit={handleSend} className={styles.form}>
           <input
-            className={styles.userMessage}
+            className={styles.userInput}
             type="text"
             value={input}
             placeholder="Write a message..."
