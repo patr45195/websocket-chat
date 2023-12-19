@@ -3,16 +3,32 @@
 import React, { FormEvent } from "react";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
+import axios from "axios";
 
 export default function Home() {
   const [user, setUser] = React.useState("");
 
   const router = useRouter();
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    localStorage.setItem("user", user);
-    router.push("/chat");
+
+    let { data } = await axios.get<boolean>(
+      "http://localhost:5000/freeUserName",
+      {
+        params: { userName: user },
+      }
+    );
+
+    const canCreateUser = data;
+
+    if (canCreateUser) {
+      localStorage.setItem("user", user);
+      router.push("/chat");
+    } else {
+      setUser("");
+      alert("Nickname is busy, come up with another nickname.");
+    }
   };
 
   return (
