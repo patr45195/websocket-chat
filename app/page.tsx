@@ -16,14 +16,14 @@ export default function Home() {
     let { data } = await axios.get<boolean>(
       "http://localhost:5000/freeUserName",
       {
-        params: { userName: user },
+        params: { userName: user.trim() },
       }
     );
 
     const canCreateUser = data;
 
     if (canCreateUser) {
-      localStorage.setItem("user", user);
+      localStorage.setItem("user", user.trim());
       router.push("/chat");
     } else {
       setUser("");
