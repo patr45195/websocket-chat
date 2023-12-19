@@ -24,6 +24,7 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
   const [input, setInput] = React.useState("");
   const [typingStatus, setTypingStatus] = React.useState("");
   const [messages, setMessages] = React.useState<messagesType[]>([]);
+  console.log(messages);
 
   const handleLeave = () => {
     localStorage.removeItem("user");
@@ -79,21 +80,35 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
         </div>
       </div>
       <div className={styles.chatsBlock}>
-        {messages.map((element: messagesType) =>
+        {messages.map((element: messagesType, index: number) =>
           element.name === localStorage.getItem("user") ? (
             <div key={element.messageID} className={styles.chats}>
-              <p className={styles.senderName}>You</p>
+              {/* Выводить имя отправителя только 1 раз, если от него несколько сообщений подряд */}
+              {index > 0 && element.name === messages[index - 1].name ? (
+                ""
+              ) : (
+                <p className={styles.senderName}>You</p>
+              )}
               <div className={styles.messageSender}>
                 <p>{element.text}</p>
-                <span className={styles.date}>{getFormatedDate(element.date)}</span>
+                <span className={styles.date}>
+                  {getFormatedDate(element.date)}
+                </span>
               </div>
             </div>
           ) : (
             <div key={element.messageID} className={styles.chats}>
-              <p className={styles.recipientName}>{element.name}</p>
+              {/* Выводить имя отправителя только 1 раз, если от него несколько сообщений подряд */}
+              {index > 0 && element.name === messages[index - 1].name ? (
+                ""
+              ) : (
+                <p className={styles.recipientName}>{element.name}</p>
+              )}
               <div className={styles.messageRecipient}>
                 <p>{element.text}</p>
-                <span className={styles.date}>{getFormatedDate(element.date)}</span>
+                <span className={styles.date}>
+                  {getFormatedDate(element.date)}
+                </span>
               </div>
             </div>
           )
