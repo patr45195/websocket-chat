@@ -15,7 +15,7 @@ export default function UsersList({ socket }: { socket: io.Socket }) {
 
   React.useEffect(() => {
     socket.on("usersChange", (users) => {
-      setUsers(users)
+      setUsers(users);
     });
   }, [socket, users]);
 
@@ -34,7 +34,7 @@ export default function UsersList({ socket }: { socket: io.Socket }) {
                 height={32}
               />
               <div className="min-w-0">
-                <p className="truncate text-sm font-semibold md:text-base">
+                <p className="text-left text-sm font-semibold md:text-base break-words">
                   {element.user}
                 </p>
               </div>
