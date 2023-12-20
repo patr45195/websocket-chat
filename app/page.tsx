@@ -1,7 +1,7 @@
 "use client";
 
 import React, { FormEvent } from "react";
-import { Button } from "./ui/button";
+import Button from "@mui/material/Button";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 
@@ -45,7 +45,7 @@ export default function Home() {
             className="border p-2 rounded-md"
           />
         </div>
-        <Button type="submit">Go</Button>
+        <Button type="submit" variant="contained">Go</Button>
       </form>
     </main>
   );
