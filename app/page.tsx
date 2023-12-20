@@ -35,7 +35,8 @@ export default function Home() {
         validationSchema={Yup.object().shape({
           name: Yup.string()
             .required("Required")
-            .min(3, "Minimum length 3 characters"),
+            .min(3, "Minimum length 3 characters")
+            .max(15, "Maximum length 15 characters"),
         })}
       >
         {(props) => {
