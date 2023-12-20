@@ -11,7 +11,8 @@ export default function Home() {
   const router = useRouter();
 
   return (
-    <main className="flex items-center justify-center h-screen">
+    <main className="flex items-center justify-center h-screen flex-col" >
+      <h1 className="text-3xl font-bold mb-4 text-blue-500 tracking-wider" >WebsocketChat</h1>
       <Formik
         initialValues={{ name: "" }}
         onSubmit={async (values) => {
@@ -36,7 +37,7 @@ export default function Home() {
           name: Yup.string()
             .required("Required")
             .min(3, "Minimum length 3 characters")
-            .max(15, "Maximum length 15 characters"),
+            .max(15, "Maximum length 20 characters"),
         })}
       >
         {(props) => {
