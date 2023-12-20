@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import axios from "axios";
 import { Formik } from "formik";
 import * as Yup from "yup";
-import { Button } from "./ui/button";
+import { Button } from "@mui/material";
 
 export default function Home() {
   const router = useRouter();
@@ -43,13 +43,15 @@ export default function Home() {
             values,
             touched,
             errors,
-            dirty,
             isSubmitting,
             handleChange,
             handleSubmit,
           } = props;
           return (
-            <form onSubmit={handleSubmit} className="flex flex-col items-center">
+            <form
+              onSubmit={handleSubmit}
+              className="flex flex-col items-center"
+            >
               <label htmlFor="name"></label>
               <input
                 className="border p-2 rounded-md"
@@ -62,7 +64,12 @@ export default function Home() {
               {errors.name && touched.name && (
                 <div className="text-red-500 text-sm">{errors.name}</div>
               )}
-              <Button type="submit" disabled={isSubmitting}>
+              <Button
+                sx={{ marginTop: "5px" }}
+                type="submit"
+                variant="outlined"
+                disabled={isSubmitting}
+              >
                 Go
               </Button>
             </form>

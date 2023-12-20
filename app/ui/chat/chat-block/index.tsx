@@ -24,7 +24,6 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
   const [input, setInput] = React.useState("");
   const [typingStatus, setTypingStatus] = React.useState("");
   const [messages, setMessages] = React.useState<messagesType[]>([]);
-  console.log(messages);
 
   const handleLeave = () => {
     localStorage.removeItem("user");
@@ -127,7 +126,7 @@ export default function ChatPage({ socket }: { socket: io.Socket }) {
           <Button
             sx={{ height: "50px", width: "150px", marginLeft: "5px" }}
             type="submit"
-            variant="contained"
+            variant="outlined"
             endIcon={<SendIcon />}
           >
             Send
