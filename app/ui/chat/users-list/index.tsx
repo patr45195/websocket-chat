@@ -7,14 +7,13 @@ import * as io from "socket.io-client";
 
 interface UserType {
   user: string;
+  userAvatar: string;
   socketID: string;
 }
 
 export default function UsersList({ socket }: { socket: io.Socket }) {
   const [users, setUsers] = React.useState<UserType[] | []>([]);
-
-  const userAvatar = localStorage.getItem("userAvatar");
-
+  
   React.useEffect(() => {
     socket.on("usersChange", (users) => {
       setUsers(users);
@@ -29,7 +28,7 @@ export default function UsersList({ socket }: { socket: io.Socket }) {
           return (
             <div className={styles.userBlock} key={element.socketID}>
               <Image
-                src={userAvatar || "/users/defaultUser.png"}
+                src={element.userAvatar}
                 alt={`user name`}
                 className="mr-4 rounded-full"
                 width={32}

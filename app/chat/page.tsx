@@ -11,7 +11,7 @@ export default function Chat() {
 
   React.useEffect(() => {
     const newSocket = io.connect("http://localhost:5000");
-    
+
     setSocket(newSocket);
 
     return () => {
@@ -24,6 +24,8 @@ export default function Chat() {
       socket.on("connect", () => {
         socket.emit("newUser", {
           user: localStorage.getItem("user"),
+          userAvatar:
+            localStorage.getItem("userAvatar") || "/users/defaultUser.png",
           socketID: socket.id,
         });
       });
