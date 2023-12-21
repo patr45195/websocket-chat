@@ -13,6 +13,8 @@ interface UserType {
 export default function UsersList({ socket }: { socket: io.Socket }) {
   const [users, setUsers] = React.useState<UserType[] | []>([]);
 
+  const userAvatar = localStorage.getItem("userAvatar");
+
   React.useEffect(() => {
     socket.on("usersChange", (users) => {
       setUsers(users);
@@ -27,7 +29,7 @@ export default function UsersList({ socket }: { socket: io.Socket }) {
           return (
             <div className={styles.userBlock} key={element.socketID}>
               <Image
-                src={"/users/user1.png"}
+                src={userAvatar || "/users/defaultUser.png"}
                 alt={`user name`}
                 className="mr-4 rounded-full"
                 width={32}

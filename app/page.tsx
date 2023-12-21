@@ -6,13 +6,45 @@ import axios from "axios";
 import { Formik } from "formik";
 import * as Yup from "yup";
 import { Button } from "@mui/material";
+import Image from "next/image";
+
+const usersImages = [
+  "/users/user1.png",
+  "/users/user2.png",
+  "/users/user3.png",
+  "/users/user4.png",
+  "/users/user5.png",
+];
 
 export default function Home() {
   const router = useRouter();
+  const [selectedAvatar, setSelectedAvatar] = React.useState("");
 
   return (
-    <main className="flex items-center justify-center h-screen flex-col" >
-      <h1 className="text-3xl font-bold mb-4 text-blue-500 tracking-wider" >WebsocketChat</h1>
+    <main className="flex items-center justify-center h-screen flex-col">
+      <h1 className="text-3xl font-bold mb-2 text-blue-500 tracking-wider">
+        WebsocketChat
+      </h1>
+      <div className="flex">
+        {usersImages.map((item) => (
+          <div
+            key={item}
+            onClick={() => setSelectedAvatar(item)}
+            className="relative"
+          >
+            <Image
+              src={item}
+              alt={item}
+              className="rounded-full m-1 cursor-pointer"
+              width={40}
+              height={40}
+            />
+            {selectedAvatar === item && (
+              <div className="absolute inset-0 rounded-full border-2 border-blue-500 opacity-50"></div>
+            )}
+          </div>
+        ))}
+      </div>
       <Formik
         initialValues={{ name: "" }}
         onSubmit={async (values) => {
@@ -27,6 +59,7 @@ export default function Home() {
 
           if (canCreateUser) {
             localStorage.setItem("user", values.name.trim());
+            localStorage.setItem("userAvatar", selectedAvatar);
             router.push("/chat");
           } else {
             values.name = "";
@@ -56,7 +89,7 @@ export default function Home() {
             >
               <label htmlFor="name"></label>
               <input
-                className="border p-2 rounded-md"
+                className="border p-2 rounded-md mt-1"
                 id="name"
                 placeholder="Enter your name"
                 type="text"
