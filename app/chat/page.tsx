@@ -4,7 +4,7 @@ import React from "react";
 import * as io from "socket.io-client";
 import UsersList from "../ui/chat/users-list";
 import ChatPage from "../ui/chat/chat-block";
-import ChannelList from "../ui/chat/channel-list";
+import Description from "../ui/chat/description-block";
 
 export default function Chat() {
   const [socket, setSocket] = React.useState<io.Socket | null>(null);
@@ -34,7 +34,7 @@ export default function Chat() {
 
   return (
     <div className="flex justify-between h-96">
-      <ChannelList />
+      <Description />
       {socket && <ChatPage socket={socket} />}
       {socket && <UsersList socket={socket} />}
     </div>

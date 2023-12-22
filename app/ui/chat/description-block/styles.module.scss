@@ -1,0 +1,29 @@
+.container {
+  min-width: 250px;
+  background-color: #e9f1f5;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+    font-size: 16px;
+    color: #333;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 8px;
+  }
+  
+  li:last-child {
+    border-bottom: none;
+  }
+}
