@@ -5,8 +5,9 @@ import * as io from "socket.io-client";
 import UsersList from "../ui/chat/users-list";
 import ChatPage from "../ui/chat/chat-block";
 import Description from "../ui/chat/description-block";
+import isAuth from "../common/HOC/isAuth";
 
-export default function Chat() {
+const Chat = () => {
   const [socket, setSocket] = React.useState<io.Socket | null>(null);
 
   React.useEffect(() => {
@@ -39,4 +40,6 @@ export default function Chat() {
       {socket && <UsersList socket={socket} />}
     </div>
   );
-}
+};
+
+export default isAuth(Chat);
